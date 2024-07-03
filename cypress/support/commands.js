@@ -23,3 +23,15 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add("login", (username, password) => {
+  const args = { username, password };
+
+  cy.origin("https://id.atlassian.com", { args }, ({ username, password }) => {
+    cy.visit("/login");
+    cy.get("#username").type(username);
+    cy.get("#login-submit").click();
+    cy.get("[data-testid='password']").type(password);
+    cy.get("#login-submit").click();
+  });
+});

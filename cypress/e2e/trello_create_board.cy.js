@@ -14,3 +14,16 @@ describe("template spec", () => {
     });
   });
 });
+
+describe("creation tableau plan test", () => {
+  beforeEach(() => {
+    cy.visit("https://trello.com/u/dudukain/boards");
+  });
+
+  it("createBoard", () => {
+    cy.get(".board-tile mod-add").click();
+    cy.get(
+      ".nch-textfield__input lsOhPsHuxEMYEb lsOhPsHuxEMYEb VkPAAkbpkKnPst"
+    ).type("Plan de test");
+  });
+});
